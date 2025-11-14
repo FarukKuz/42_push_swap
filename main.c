@@ -91,6 +91,7 @@ int	main(int argc, char	**argv)
     
     stack_a = create_stack(argc, argv);
     print_nodes(stack_a);
+    printf("test");
 
 	return (0);
 }
