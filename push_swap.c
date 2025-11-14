@@ -28,6 +28,21 @@ t_list	*create_new_node(int data, t_list *head)
 	return (new_node);
 }
 
+t_list  *create_stack(int argc, char **argv)
+{
+    t_list  *stack;
+    int     i;
+
+    stack = NULL;
+    i = 1;
+    while (i < argc)
+    {
+        stack = create_new_node(ft_atol(argv[i]), stack);
+        i++;
+    }
+    return (stack);
+}
+
 t_list	*uptade_head_node(t_list *head, t_list *new_node)
 {
 	if (new_node == NULL)
