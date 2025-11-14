@@ -25,7 +25,6 @@ typedef struct s_list
 
 t_list	*create_new_node(int data, t_list *head);
 t_list  *create_stack(int argc, char **argv);
-t_list	*uptade_head_node(t_list *head, t_list *new_node);
 void	print_nodes(t_list	*head);
 long	ft_atol(const char *nptr);
 t_list	*sa(t_list *first_node, t_list *second_node, int flag);
