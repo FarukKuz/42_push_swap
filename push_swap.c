@@ -43,15 +43,6 @@ t_list  *create_stack(int argc, char **argv)
     return (stack);
 }
 
-t_list	*uptade_head_node(t_list *head, t_list *new_node)
-{
-	if (new_node == NULL)
-		return (head);
-	new_node->next = head;
-	head = new_node;
-	return (head);
-}
-
 void	print_nodes(t_list	*head)
 {
 	t_list	*tmp;
