@@ -19,6 +19,7 @@ t_list	*pb(t_list **stack_a, t_list *stack_b)
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
 	tmp->next = stack_b;
+    write(1, "pb\n", 3);
 	return (tmp);
 }
 
@@ -29,6 +30,7 @@ t_list	*pa(t_list *stack_a, t_list **stack_b)
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	tmp->next = stack_a;
+    write(1, "pa\n", 3);
 	return (tmp);
 }
 

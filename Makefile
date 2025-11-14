@@ -4,14 +4,15 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = push_operations.c push_swap.c swap_operations.c libft/ft_atoi.c
+SRC = op_push.c push_swap.c op_swap.c libft/ft_atol.c op_rotate.c op_reverse_rotate.c\
+	stack_utils.c
 
 RM = rm -rf
 
 OBJS = $(SRC:.c=.o)
 
 $(NAME): $(OBJS)
-	ar rcs -o $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 all: $(NAME)
 

@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -23,13 +24,22 @@ typedef struct s_list
 }	t_list;
 
 t_list	*create_new_node(int data, t_list *head);
+t_list  *create_stack(int argc, char **argv);
 t_list	*uptade_head_node(t_list *head, t_list *new_node);
 void	print_nodes(t_list	*head);
-int		ft_atoi(const char *nptr);
-t_list	*sa(t_list *first_node, t_list *second_node);
-t_list	*sb(t_list *first_node, t_list *second_node);
+long	ft_atol(const char *nptr);
+t_list	*sa(t_list *first_node, t_list *second_node, int flag);
+t_list	*sb(t_list *first_node, t_list *second_node, int flag);
 void	ss(t_list *a_1, t_list *a_2, t_list *b_1, t_list *b_2);
 t_list	*pb(t_list **stack_a, t_list *stack_b);
 t_list	*pa(t_list *stack_a, t_list **stack_b);
+t_list  *ra(t_list *stack_a, int flag);
+t_list  *rb(t_list *stack_b, int flag);
+void    rr(t_list **stack_a, t_list **stack_b);
+t_list  *end_of_stack(t_list *stack);
+t_list  *bef_end_of_stack(t_list *stack);
+void    rra(t_list **stack_a, int flag);
+void    rrb(t_list **stack_b, int flag);
+void    rrr(t_list **stack_a, t_list **stack_b);
 
 #endif
