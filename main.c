@@ -92,7 +92,14 @@ int	main(int argc, char	**argv)
     check_args(argc, argv);
     stack_a = create_stack(argc, argv);
     print_nodes(stack_a);
-    printf("test");
 
+    int i = 0;
+    int *lis;
+    lis = find_LIS(stack_a, argc);
+    while (i < argc)
+    {
+        printf("LIS (i): %d\n", lis[i]);
+        i++;
+    }
 	return (0);
 }

@@ -25,64 +25,84 @@ int *convert_array(t_list *stack, int argc)
     return (array);
 }
 
-int find_lis_len(t_list *current_node)
+int    *len_lis_min(int *array_a, int argc)
 {
-    int     len;
-    t_list  *i;
+    int    *len_lis;
+    int    i;
 
-    len = 0;
-    i = current_node;
-    while (current_node->data < i->data)
+    len_lis = malloc(sizeof(int) * argc);
+    if (!len_lis)
     {
-        i = i->next;
-        len++;
+        free(array_a);
+        return (NULL);
     }
-    return (len);
+    i = 0;
+    while (i < argc)
+    {
+        len_lis[i] = 1;
+        i++;
+    }
+    return (len_lis);
 }
 
-int find_max_len(int *array_a)
+int    *calc_lis_lens(int *arr, int *len_lis, int n)
 {
-    int max_len;
-    int i;
-    int j;
+    int    i;
+    int    j;
 
-    i = 0;
-    j = 1;
-    max_len = array_a[i];
-    while (array_a[i])
+    i = 1;
+    while (i < n)
     {
-        while (array_a[j])
+        j = 0;
+        while (j < i)
         {
-            if (array_a[j] > array_a[i])
-            {
-                max_len = array_a[j];
-                break;
-            }
+            if (arr[i] > arr[j] && len_lis[i] < len_lis[j] + 1)
+                len_lis[i] = len_lis[j] + 1;
             j++;
         }
-        i = j;
+        i++;
+    }
+    return (len_lis);
+}
+
+int    find_max_len(int *len_lis, int n)
+{
+    int    max_len;
+    int    i;
+
+    max_len = 0;
+    i = 0;
+    while (i < n)
+    {
+        if (len_lis[i] > max_len)
+            max_len = len_lis[i];
+        i++;
     }
     return (max_len);
 }
 
-int *find_LIS(t_list *stack_a, int argc)
+int    *create_lis(int *array_a, int *len_lis, int argc, int max_len)
 {
-    int     *LIS;
-    int     *array_a;
-    int     *len_lis;
-    int     max_len;
-    int     i;
+    int    *lis;
+    int    i;
+    int    current_len;
+    int    current_val;
 
-    array_a = convert_array(stack_a, argc);
-    if (!array_a)
+    lis = malloc(sizeof(int) * max_len);
+    if (!lis)
         return (NULL);
-    max_len = 0;
     i = 0;
-    while (array_a[i])
+    current_len = 1;
+    current_val = INT_MIN;
+    while (i <= argc - 1 && current_len <= max_len)
     {
-        len_lis[i] = find_lis_len(stack_a);
-        
+        if (len_lis[i] == current_len && array_a[i] > current_val)
+        {
+            lis[current_len + 1] = array_a[i];
+            current_val = array_a[i];
+            current_len++;
+        }
+        i++;
     }
-    free (array_a);
-    return (LIS);
+    return (lis);
 }
