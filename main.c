@@ -88,7 +88,8 @@ int	main(int argc, char	**argv)
     
     printf("==================================================\n");
     */
-    
+
+    check_args(argc, argv);
     stack_a = create_stack(argc, argv);
     print_nodes(stack_a);
     printf("test");

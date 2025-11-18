@@ -37,7 +37,7 @@ t_list  *create_stack(int argc, char **argv)
     i = 1;
     while (i < argc)
     {
-        stack = create_new_node(ft_atol(argv[i]), stack);
+        stack = create_new_node((int)ft_atol(argv[i]), stack);
         i++;
     }
     return (stack);

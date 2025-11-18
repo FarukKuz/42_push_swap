@@ -21,7 +21,7 @@ typedef struct s_list
 {
 	int				data;
 	struct s_list	*next;
-}	t_list;
+}	                t_list;
 
 t_list	*create_new_node(int data, t_list *head);
 t_list  *create_stack(int argc, char **argv);
@@ -40,5 +40,10 @@ t_list  *bef_end_of_stack(t_list *stack);
 void    rra(t_list **stack_a, int flag);
 void    rrb(t_list **stack_b, int flag);
 void    rrr(t_list **stack_a, t_list **stack_b);
+void    check_args(int argc, char **argv);
+int     is_duplicate(int *unique_nbrs, int num, int len);
+int     is_number(char *arg);
+int     is_int_range(long nbr);
+void    error_exit(char *message);
 
 #endif
