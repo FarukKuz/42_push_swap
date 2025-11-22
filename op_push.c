@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push&swap_op.c                                     :+:      :+:    :+:   */
+/*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:37:45 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/06 19:37:34 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/11/22 17:00:29 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*pb(t_list **stack_a, t_list *stack_b)
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
 	tmp->next = stack_b;
-    write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 	return (tmp);
 }
 
@@ -30,7 +30,6 @@ t_list	*pa(t_list *stack_a, t_list **stack_b)
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	tmp->next = stack_a;
-    write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 	return (tmp);
 }
-
