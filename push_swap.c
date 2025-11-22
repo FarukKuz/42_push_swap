@@ -6,44 +6,40 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:53:10 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/06 16:32:29 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/11/22 18:54:16 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*create_new_node(int data, t_list *head)
+t_list	*create_new_node(int data)
 {
-	t_list	*new_node;
-
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->data = data;
-	new_node->next = NULL;
-	if (head == NULL)
-		return (new_node);
-	new_node->next = head;
-	head = new_node;
-	return (new_node);
+	
+	return (head);
 }
 
-t_list  *create_stack(int argc, char **argv)
+t_list	*create_stack(int argc, char **argv)
 {
-    t_list  *stack;
-    int     i;
+	t_list	*head;
+	t_list	*tmp;
+	int		i;
 
-    stack = NULL;
-    i = 1;
-    while (i < argc)
-    {
-        stack = create_new_node((int)ft_atol(argv[i]), stack);
-        i++;
-    }
-    return (stack);
+	i = 1;
+	head->data = ft_atol(argv[i]);
+	head->next = NULL;
+	if (argc == 2)
+		return (head);
+	tmp = head;
+	while (i <= argc)
+	{
+		tmp->next = create_new_node(ft_atol(argv[i]));
+		i++;
+		tmp = tmp->next;
+	}
+	return (head);
 }
 
-void	print_nodes(t_list	*head)
+void	print_nodes(t_list *head)
 {
 	t_list	*tmp;
 
@@ -54,5 +50,3 @@ void	print_nodes(t_list	*head)
 		tmp = tmp->next;
 	}
 }
-
-
