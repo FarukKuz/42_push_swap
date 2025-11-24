@@ -12,31 +12,41 @@
 
 #include "push_swap.h"
 
-t_list	*create_new_node(int data)
+t_list    *create_new_node(int data)
 {
-	
-	return (head);
+    t_list    *node;
+
+    node = malloc(sizeof(t_list));
+    if (!node)
+        return (NULL);
+    node->data = data;
+    node->next = NULL;
+    return (node);
 }
 
-t_list	*create_stack(int argc, char **argv)
+t_list    *create_stack(int argc, char **argv)
 {
-	t_list	*head;
-	t_list	*tmp;
-	int		i;
+    t_list    *head;
+    t_list    *end;
+    t_list    *current_node;
+    int        i;
 
-	i = 1;
-	head->data = ft_atol(argv[i]);
-	head->next = NULL;
-	if (argc == 2)
-		return (head);
-	tmp = head;
-	while (i <= argc)
-	{
-		tmp->next = create_new_node(ft_atol(argv[i]));
-		i++;
-		tmp = tmp->next;
-	}
-	return (head);
+    head = NULL;
+    end = NULL;
+    i = 1;
+    while (i < argc)
+    {
+        current_node = create_new_node((int)ft_atol(argv[i]));
+        if (!current_node)
+            return (NULL);
+        if (head == NULL)
+            head = current_node;
+        else
+            end->next = current_node;
+        end = current_node;
+        i++;
+    }
+    return (head);
 }
 
 void	print_nodes(t_list *head)

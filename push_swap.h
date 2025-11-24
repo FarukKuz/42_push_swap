@@ -24,7 +24,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-t_list				*create_new_node(int data, t_list *head);
+t_list				*create_new_node(int data);
 t_list				*create_stack(int argc, char **argv);
 void				print_nodes(t_list *head);
 long				ft_atol(const char *nptr);
