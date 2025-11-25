@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 
     printf("\n--------MALIYET HESAPLAMA----------\n");
     cost_list = malloc(sizeof(int) * 10);
-    cost_list = find_cost_list(stack_b);
+    cost_list = find_cost_list_b(stack_b);
     printf("COST_LIST[0]: , %d\n", cost_list[0]);
     printf("COST_LIST[1]:, %d\n", cost_list[1]);
     printf("COST_LIST[2]:, %d\n", cost_list[2]);
