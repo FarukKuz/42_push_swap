@@ -17,7 +17,8 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	int		i;
 	int		*lis;
-    // t_list	*stack_b;
+    t_list	*stack_b;
+    int     *cost_list;
 
 	/*
 	stack_a = create_new_node(ft_atoi(argv[1]), NULL);
@@ -79,10 +80,23 @@ int	main(int argc, char **argv)
 	print_nodes(stack_a);
 	i = 0;
 	lis = find_LIS(stack_a, argc);
-	while (i < argc)
+	while (i <= 5)
 	{
-		printf("LIS (i): %d\n", lis[i]);
+		printf("LIS (%d): %d\n", i ,lis[i]);
 		i++;
 	}
+    stack_b = push_out_lis(lis, &stack_a, argc);
+    print_nodes(stack_a);
+    printf("\n-------\n");
+    print_nodes(stack_b);
+
+    printf("\n--------MALIYET HESAPLAMA----------\n");
+    cost_list = malloc(sizeof(int) * 10);
+    cost_list = find_cost_list(stack_b);
+    printf("COST_LIST[0]: , %d\n", cost_list[0]);
+    printf("COST_LIST[1]:, %d\n", cost_list[1]);
+    printf("COST_LIST[2]:, %d\n", cost_list[2]);
+    printf("COST_LIST[3]:, %d\n", cost_list[3]);
+    
 	return (0);
 }

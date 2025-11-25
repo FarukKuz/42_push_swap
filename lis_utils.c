@@ -102,7 +102,7 @@ int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 			current_val = array_a[i];
 			current_len++;
 		}
-		i++;
+        i++;
 	}
 	return (lis);
 }
