@@ -45,3 +45,24 @@ int *calculate_total_cost(int *cost_to_a, int *cost_to_b, int size)
     }
     return (total_cost);
 }
+
+int    find_best_index(int *total_costs, int size)
+{
+    int    i;
+    int    min_cost;
+    int    best_index;
+
+    min_cost = 2147483647;
+    best_index = -1;
+    i = 0;
+    while (i < size)
+    {
+        if (total_costs[i] < min_cost)
+        {
+            min_cost = total_costs[i];
+            best_index = i;
+        }
+        i++;
+    }
+    return (best_index);
+}
