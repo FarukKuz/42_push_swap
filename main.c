@@ -17,8 +17,8 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	int		i;
 	int		*lis;
+    // t_list	*stack_b;
 
-	// t_list	*stack_b;
 	/*
 	stack_a = create_new_node(ft_atoi(argv[1]), NULL);
 	stack_a = create_new_node(ft_atoi(argv[2]), stack_a);
@@ -73,6 +73,7 @@ int	main(int argc, char **argv)
 	print_nodes(stack_b);
 	printf("==================================================\n");
 	*/
+
 	check_args(argc, argv);
 	stack_a = create_stack(argc, argv);
 	print_nodes(stack_a);

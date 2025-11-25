@@ -27,3 +27,37 @@ int	*find_LIS(t_list *stack_a, int argc)
 	free(len_lis);
 	return (lis);
 }
+
+static int    is_in_lis(int val, int *lis, int size)
+{
+    int    i;
+
+    i = 0;
+    while (i < size)
+    {
+        if (lis[i] == val)
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+t_list    *push_out_lis(int *lis, t_list **stack_a, int argc)
+{
+    t_list    *stack_b;
+    int        size;
+    int        i;
+
+    stack_b = NULL;
+    size = argc - 1;
+    i = 0;
+    while (i < size)
+    {
+        if (is_in_lis((*stack_a)->data, lis, size))
+            *stack_a = ra(*stack_a, 1);
+        else
+            stack_b = pb(stack_a, stack_b);
+        i++;
+    }
+    return (stack_b);
+}
