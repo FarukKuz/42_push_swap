@@ -87,7 +87,7 @@ int    *find_cost_list_a(t_list *stack_a, t_list *stack_b)
     int        i;
     t_list    *tmp;
 
-    size = stack_len(stack_a);
+    size = stack_len(stack_b);
     cost_list = (int *)malloc(sizeof(int) * size);
     if (!cost_list)
         return (NULL);
