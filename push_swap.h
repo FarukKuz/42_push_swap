@@ -54,6 +54,6 @@ int					*create_lis(int *array_a, int *len_lis, int n, int max_len);
 int					*find_LIS(t_list *stack_a, int argc);
 t_list              *push_out_lis(int *lis, t_list **stack_a, int argc);
 int                 stack_len(t_list *stack);
-int                 *find_cost_list(t_list *stack_b);
+int                 *find_cost_list_b(t_list *stack_b);
 
 #endif
