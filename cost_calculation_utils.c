@@ -61,8 +61,8 @@ static int    index_target_a(t_list *stack_a, int current_value)
     long       big_value;
     int        i;
 
-    target_index = -1;
-    closest_bigger_val = 2147483648;
+    index = -1;
+    big_value = 2147483648;
     tmp = stack_a;
     i = 0;
     while (tmp)

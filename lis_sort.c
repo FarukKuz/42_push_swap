@@ -101,18 +101,27 @@ void  do_op(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
 
 t_list    *lis_sort(t_list *stack_a, t_list *stack_b, int argc)
 {
-    int *lis;
-    int *cost_for_b;
-    int *cost_for_a;
-    int *total_costs;
+    int     *lis;
+    int     *cost_for_b;
+    int     *cost_for_a;
+    //int     *total_costs;
     t_list  *sorted_stack;
+    int     i;
+    int     size;
 
     lis = find_LIS(stack_a, argc);
     stack_b = push_out_lis(lis, &stack_a, argc);
     cost_for_a = find_cost_list_a(stack_a, stack_b);
     cost_for_b = find_cost_list_b(stack_b);
-    total_costs = calculate_total_cost(cost_for_a, cost_for_b, argc - 1);
-    //sorted_stack = do_op();
+    //total_costs = calculate_total_cost(cost_for_a, cost_for_b, argc - 1);
     
+    i = 0;
+    size = argc - 1;
+    while (i < size)
+    {
+        do_op(&stack_a, &stack_b, cost_for_a[i], cost_for_b[i]);
+        i++;
+    }
+    sorted_stack = stack_a;
     return (sorted_stack);
 }
