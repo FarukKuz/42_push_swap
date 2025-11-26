@@ -58,4 +58,6 @@ int                 *find_cost_list_b(t_list *stack_b);
 int                 *find_cost_list_a(t_list *stack_a, t_list *stack_b);
 int                 find_best_index(int *total_costs, int size);
 int                 *calculate_total_cost(int *cost_to_a, int *cost_to_b, int size);
+t_list              *lis_sort(t_list *stack_a, t_list *stack_b, int argc);
+
 #endif

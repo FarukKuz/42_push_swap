@@ -98,5 +98,11 @@ int	main(int argc, char **argv)
     printf("COST_LIST[2]:, %d\n", cost_list[2]);
     printf("COST_LIST[3]:, %d\n", cost_list[3]);
     
+    stack_a = lis_sort(stack_a, stack_b, argc);
+    printf("\n\nSIRALANMIS\n***");
+    print_nodes(stack_a);
+    printf("\nB\n");
+    print_nodes(stack_b);
+    
 	return (0);
 }
