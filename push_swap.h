@@ -55,5 +55,7 @@ int					*find_LIS(t_list *stack_a, int argc);
 t_list              *push_out_lis(int *lis, t_list **stack_a, int argc);
 int                 stack_len(t_list *stack);
 int                 *find_cost_list_b(t_list *stack_b);
-
+int                 *find_cost_list_a(t_list *stack_a, t_list *stack_b);
+int                 find_best_index(int *total_costs, int size);
+int                 *calculate_total_cost(int *cost_to_a, int *cost_to_b, int size);
 #endif
