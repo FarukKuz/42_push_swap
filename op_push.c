@@ -27,6 +27,8 @@ t_list	*pa(t_list *stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
 
+    if (!stack_b || !*stack_b)
+            return (stack_a);
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	tmp->next = stack_a;
