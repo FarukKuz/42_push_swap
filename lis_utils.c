@@ -1,9 +1,14 @@
-//
-//  lis_utils.c
-//  push_swap
-//
-//  Created by Faruk Kuz on 15.11.2025.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lis_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/27 17:07:32 by fakuz             #+#    #+#             */
+/*   Updated: 2025/11/27 17:07:42 by fakuz            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -102,7 +107,7 @@ int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 			current_val = array_a[i];
 			current_len++;
 		}
-        i++;
+		i++;
 	}
 	return (lis);
 }

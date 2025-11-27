@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:56:46 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/22 17:01:42 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/11/27 17:09:23 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ int					*calc_lis_lens(int *arr, int *len_lis, int n);
 int					find_max_len(int *len_lis, int n);
 int					*create_lis(int *array_a, int *len_lis, int n, int max_len);
 int					*find_LIS(t_list *stack_a, int argc);
-t_list              *push_out_lis(int *lis, t_list **stack_a, int argc);
-int                 stack_len(t_list *stack);
-int                 *find_cost_list_b(t_list *stack_b);
-int                 *find_cost_list_a(t_list *stack_a, t_list *stack_b);
-int                 find_best_index(int *total_costs, int size);
-int                 *calculate_total_cost(int *cost_to_a, int *cost_to_b, int size);
-t_list              *lis_sort(t_list **stack_a, t_list **stack_b, int argc);
+t_list				*push_out_lis(int *lis, t_list **stack_a, int argc);
+int					stack_len(t_list *stack);
+int					*find_cost_list_b(t_list *stack_b);
+int					*find_cost_list_a(t_list *stack_a, t_list *stack_b);
+int					find_best_index(int *total_costs, int size);
+int					*calculate_total_cost(int *cost_to_a, int *cost_to_b,
+						int size);
+t_list				*lis_sort(t_list **stack_a, t_list **stack_b, int argc);
 
 #endif
