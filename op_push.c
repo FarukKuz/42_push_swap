@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:37:45 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/22 17:00:29 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/11/27 17:08:43 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_list	*pa(t_list *stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
 
-    if (!stack_b || !*stack_b)
-            return (stack_a);
+	if (!stack_b || !*stack_b)
+		return (stack_a);
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	tmp->next = stack_a;
