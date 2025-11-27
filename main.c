@@ -93,13 +93,18 @@ int	main(int argc, char **argv)
     printf("\n--------MALIYET HESAPLAMA----------\n");
     cost_list = malloc(sizeof(int) * 10);
     cost_list = find_cost_list_b(stack_b);
-    printf("COST_LIST[0]: , %d\n", cost_list[0]);
+    printf("COST_LIST[0]:, %d\n", cost_list[0]);
     printf("COST_LIST[1]:, %d\n", cost_list[1]);
     printf("COST_LIST[2]:, %d\n", cost_list[2]);
     printf("COST_LIST[3]:, %d\n", cost_list[3]);
+    printf("COST_LIST[4]:, %d\n", cost_list[4]);
+    printf("COST_LIST[5]:, %d\n", cost_list[5]);
+    printf("COST_LIST[6]:, %d\n", cost_list[6]);
+    printf("COST_LIST[7]:, %d\n", cost_list[7]);
+    printf("COST_LIST[8]:, %d\n", cost_list[8]);
     
     stack_a = lis_sort(stack_a, stack_b, argc);
-    printf("\n\nSIRALANMIS\n***");
+    printf("\n\nSIRALANMIS\n");
     print_nodes(stack_a);
     printf("\nB\n");
     print_nodes(stack_b);
