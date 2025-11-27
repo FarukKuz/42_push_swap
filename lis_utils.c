@@ -98,7 +98,7 @@ int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 	{
 		if (len_lis[i] == current_len && array_a[i] > current_val)
 		{
-			lis[current_len + 1] = array_a[i];
+			lis[current_len - 1] = array_a[i];
 			current_val = array_a[i];
 			current_len++;
 		}
