@@ -1,8 +1,8 @@
-NAME = pushswap
+NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = op_push.c push_swap.c op_swap.c libft/ft_atol.c op_rotate.c op_reverse_rotate.c\
 	stack_utils.c error_management.c lis_utils.c lis_sort.c main.c cost_calculation.c\

@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:06:31 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 14:45:36 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 15:34:02 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_list	*push_out_lis(int *lis, t_list **stack_a, int argc)
 			stack_b = pb(stack_a, stack_b);
 		i++;
 	}
-	printf("bitti\n");
 	return (stack_b);
 }
 
@@ -152,9 +151,9 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 		total_cost = calculate_total_cost(cost_for_a, cost_for_b, size_b);
 		best_index = find_best_index(total_cost, size_b);
 		do_op(stack_a, stack_b, cost_for_a[best_index], cost_for_b[best_index]);
-		edit_sorted_stack(stack_a);
 		free(cost_for_a);
 		free(cost_for_b);
 		free(total_cost);
 	}
+	edit_sorted_stack(stack_a);
 }
