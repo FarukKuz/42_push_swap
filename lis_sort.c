@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:06:31 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 10:59:22 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 11:52:55 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_list	*push_out_lis(int *lis, t_list **stack_a, int argc)
 	while (i < size)
 	{
 		if (is_in_lis((*stack_a)->data, lis, size))
-			*stack_a = ra(*stack_a, 1);
+			*stack_a = ra(*stack_a, 0);
 		else
 			stack_b = pb(stack_a, stack_b);
 		i++;
@@ -104,12 +104,11 @@ void	do_op(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
 	*stack_a = pa(*stack_a, stack_b);
 }
 
-t_list	*lis_sort(t_list **stack_a, t_list **stack_b, int argc)
+void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 {
 	int		*lis;
 	int		*cost_for_b;
 	int		*cost_for_a;
-	t_list	*sorted_stack;
 	int		i;
 	int		size;
 
@@ -118,6 +117,13 @@ t_list	*lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 	cost_for_a = find_cost_list_a(*stack_a, *stack_b);
 	cost_for_b = find_cost_list_b(*stack_b);
 
+	printf("((((  A  ))))\n");
+	print_nodes(*stack_a);
+	printf("((((  B  ))))\n");
+	if (*stack_b == NULL)
+		printf("Stack B is empty.\n");
+	else
+		print_nodes(*stack_b);
 	i = 0;
 	size = argc - 1;
 	while (i < size)
@@ -125,6 +131,4 @@ t_list	*lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 		do_op(stack_a, stack_b, cost_for_a[i], cost_for_b[i]);
 		i++;
 	}
-	sorted_stack = *stack_a;
-	return (sorted_stack);
 }

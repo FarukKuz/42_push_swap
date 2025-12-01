@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:32:38 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 11:03:26 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 12:05:16 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
-	int		i;
-	int		*lis;
+	//int		i;
+	//int		*lis;
     t_list	*stack_b;
     int     *cost_list;
 
@@ -77,7 +77,9 @@ int	main(int argc, char **argv)
 
 	check_args(argc, argv);
 	stack_a = create_stack(argc, argv);
-	print_nodes(stack_a);
+	stack_b = NULL;
+
+	/* print_nodes(stack_a);
 	i = 0;
 	lis = find_LIS(stack_a, argc);
 	while (i <= 5)
@@ -90,7 +92,7 @@ int	main(int argc, char **argv)
     print_nodes(stack_a);
     printf("\n-------\n");
 	printf("B\n");
-    print_nodes(stack_b);
+    print_nodes(stack_b); */
 
     printf("\n--------MALIYET HESAPLAMA----------\n");
     cost_list = malloc(sizeof(int) * 10);
@@ -105,12 +107,13 @@ int	main(int argc, char **argv)
     printf("COST_LIST[7]: %d\n", cost_list[7]);
     printf("COST_LIST[8]: %d\n", cost_list[8]);
 
-	/*
-	stack_a = lis_sort(stack_a, stack_b, argc);
+
+	lis_sort(&stack_a, &stack_b, argc);
+
     printf("\n\nSIRALANMIS\n");
     print_nodes(stack_a);
     printf("\nB\n");
     print_nodes(stack_b);
-    */
+
 	return (0);
 }
