@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:32:38 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 12:05:16 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 13:11:34 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,105 +15,14 @@
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
-	//int		i;
-	//int		*lis;
-    t_list	*stack_b;
-    int     *cost_list;
-
-	/*
-	stack_a = create_new_node(ft_atoi(argv[1]), NULL);
-	stack_a = create_new_node(ft_atoi(argv[2]), stack_a);
-	stack_a = create_new_node(ft_atoi(argv[3]), stack_a);
-	stack_a = create_new_node(ft_atoi(argv[4]), stack_a);
-	stack_a = sa(stack_a, stack_a->next, 0);
-	print_nodes(stack_a);
-	stack_b = create_new_node(ft_atoi(argv[5]), NULL);
-	stack_b = create_new_node(ft_atoi(argv[6]), stack_b);
-	stack_b = create_new_node(ft_atoi(argv[7]), stack_b);
-	stack_b = create_new_node(ft_atoi(argv[8]), stack_b);
-	stack_b = sb(stack_b, stack_b->next, 0);
-	sb(stack_b, stack_b->next, 0);
-	print_nodes(stack_b);
-	printf("==================================================\n");
-	printf("\nPush B*********\n");
-	stack_b = pb(&stack_a, stack_b);
-	printf("+++ stack a\n");
-	print_nodes(stack_a);
-	printf("+++ stack b\n");
-	print_nodes(stack_b);
-	printf("\nPush A*********\n");
-	stack_a = pb(&stack_b, stack_a);
-	printf("+++ stack a\n");
-	print_nodes(stack_a);
-	printf("+++ stack b\n");
-	print_nodes(stack_b);
-	printf("==================================================\n");
-	printf("\nRotate A - ra \n");
-	stack_a = ra(stack_a, 0);
-	print_nodes(stack_a);
-	printf("\nRotate B - rb \n");
-	stack_b = rb(stack_b, 0);
-	print_nodes(stack_b);
-	printf("\nRotate A & B - ra & rb \n");
-	rr(&stack_a, &stack_b);
-	printf("A\n");
-	print_nodes(stack_a);
-	printf("B\n");
-	print_nodes(stack_b);
-	printf("==================================================\n");
-	printf("\nReverse Rotate - rra \n");
-	rra(&stack_a, 0);
-	print_nodes(stack_a);
-	printf("\nReverse Rotate - rrb \n");
-	rrb(&stack_b, 0);
-	print_nodes(stack_b);
-	printf("\nReverse Rotate - rrr \n");
-	rrr(&stack_a, &stack_b);
-	print_nodes(stack_a);
-	printf("--------------\n");
-	print_nodes(stack_b);
-	printf("==================================================\n");
-	*/
+	t_list	*stack_b;
 
 	check_args(argc, argv);
 	stack_a = create_stack(argc, argv);
 	stack_b = NULL;
-
-	/* print_nodes(stack_a);
-	i = 0;
-	lis = find_LIS(stack_a, argc);
-	while (i <= 5)
-	{
-		printf("LIS (%d): %d\n", i ,lis[i]);
-		i++;
-	}
-    stack_b = push_out_lis(lis, &stack_a, argc);
-	printf("A\n");
-    print_nodes(stack_a);
-    printf("\n-------\n");
-	printf("B\n");
-    print_nodes(stack_b); */
-
-    printf("\n--------MALIYET HESAPLAMA----------\n");
-    cost_list = malloc(sizeof(int) * 10);
-    cost_list = find_cost_list_b(stack_b);
-    printf("COST_LIST[0]: %d\n", cost_list[0]);
-    printf("COST_LIST[1]: %d\n", cost_list[1]);
-    printf("COST_LIST[2]: %d\n", cost_list[2]);
-    printf("COST_LIST[3]: %d\n", cost_list[3]);
-    printf("COST_LIST[4]: %d\n", cost_list[4]);
-    printf("COST_LIST[5]: %d\n", cost_list[5]);
-    printf("COST_LIST[6]: %d\n", cost_list[6]);
-    printf("COST_LIST[7]: %d\n", cost_list[7]);
-    printf("COST_LIST[8]: %d\n", cost_list[8]);
-
-
 	lis_sort(&stack_a, &stack_b, argc);
-
-    printf("\n\nSIRALANMIS\n");
-    print_nodes(stack_a);
-    printf("\nB\n");
-    print_nodes(stack_b);
+	printf("\n\nSIRALANMIS\n");
+	print_nodes(stack_a);
 
 	return (0);
 }

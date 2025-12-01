@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:08:17 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/27 17:08:24 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 12:43:44 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,14 @@ static int	index_target_a(t_list *stack_a, int current_value)
 int	*find_cost_list_a(t_list *stack_a, t_list *stack_b)
 {
 	int		*cost_list;
-	int		size;
+	int		size_b;
+	int		size_a;
 	int		i;
 	t_list	*tmp;
 
-	size = stack_len(stack_b);
-	cost_list = (int *)malloc(sizeof(int) * size);
+	size_b = stack_len(stack_b);
+	size_a = stack_len(stack_a);
+	cost_list = (int *)malloc(sizeof(int) * size_b);
 	if (!cost_list)
 		return (NULL);
 	i = 0;
@@ -101,8 +103,8 @@ int	*find_cost_list_a(t_list *stack_a, t_list *stack_b)
 	while (tmp)
 	{
 		cost_list[i] = index_target_a(stack_a, tmp->data);
-		if (cost_list[i] > size / 2)
-			cost_list[i] = (size - cost_list[i]) * -1;
+		if (cost_list[i] > size_a / 2)
+			cost_list[i] = (size_a - cost_list[i]) * -1;
 		tmp = tmp->next;
 		i++;
 	}
