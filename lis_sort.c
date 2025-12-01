@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:06:31 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 13:19:26 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 14:45:36 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_list	*push_out_lis(int *lis, t_list **stack_a, int argc)
 			stack_b = pb(stack_a, stack_b);
 		i++;
 	}
+	printf("bitti\n");
 	return (stack_b);
 }
 
@@ -104,10 +105,30 @@ void	do_op(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
 	*stack_a = pa(*stack_a, stack_b);
 }
 
-/* void	edit_sorted_stack(t_list **stack_a, int	i)
+void	edit_sorted_stack(t_list **stack_a)
 {
-	
-} */
+	int	min_nbr_index;
+	int	len;
+
+	min_nbr_index = find_min_index(*stack_a);
+	len = stack_len(*stack_a);
+	if (min_nbr_index > len / 2)
+	{
+		while (min_nbr_index < len)
+		{
+			rra(stack_a, 0);
+			min_nbr_index++;
+		}
+	}
+	else
+	{
+		while (min_nbr_index > 0)
+		{
+			*stack_a = ra(*stack_a, 0);
+			min_nbr_index--;
+		}
+	}
+}
 
 void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 {
@@ -131,6 +152,7 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 		total_cost = calculate_total_cost(cost_for_a, cost_for_b, size_b);
 		best_index = find_best_index(total_cost, size_b);
 		do_op(stack_a, stack_b, cost_for_a[best_index], cost_for_b[best_index]);
+		edit_sorted_stack(stack_a);
 		free(cost_for_a);
 		free(cost_for_b);
 		free(total_cost);

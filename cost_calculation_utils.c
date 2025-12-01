@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:08:17 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 12:43:44 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 14:36:04 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	*find_cost_list_b(t_list *stack_b)
 	return (cost_list);
 }
 
-static int	find_min_index(t_list *stack)
+int	find_min_index(t_list *stack)
 {
 	int	min_value;
 	int	min_index;
