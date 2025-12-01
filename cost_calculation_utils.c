@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:08:17 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 14:36:04 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 18:43:00 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	find_min_index(t_list *stack)
 	i = 0;
 	while (stack)
 	{
+		printf("himm %d - ", i);
 		if (stack->data < min_value)
 		{
 			min_value = stack->data;

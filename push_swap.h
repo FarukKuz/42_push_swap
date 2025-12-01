@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:56:46 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 14:42:08 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 18:25:41 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ typedef struct s_list
 	int				data;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_cost
+{
+	int				*cost_a;
+	int				*cost_b;
+	int				*total_cost;
+}					t_cost;
+
 
 t_list				*create_new_node(int data);
 t_list				*create_stack(int argc, char **argv);

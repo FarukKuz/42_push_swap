@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:06:31 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 15:34:02 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 18:37:06 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,14 @@ void	edit_sorted_stack(t_list **stack_a)
 	int	min_nbr_index;
 	int	len;
 
+	printf("ULAN\n");
 	min_nbr_index = find_min_index(*stack_a);
+	printf("ULAN2\n");
 	len = stack_len(*stack_a);
+	printf("ULAN3\n");
 	if (min_nbr_index > len / 2)
 	{
+		printf("girdi\n");
 		while (min_nbr_index < len)
 		{
 			rra(stack_a, 0);
@@ -121,6 +125,7 @@ void	edit_sorted_stack(t_list **stack_a)
 	}
 	else
 	{
+		printf("girdi 2\n");
 		while (min_nbr_index > 0)
 		{
 			*stack_a = ra(*stack_a, 0);
@@ -129,20 +134,28 @@ void	edit_sorted_stack(t_list **stack_a)
 	}
 }
 
-void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
+t_list	*prepare_stack_b(t_list *stack_a, int argc)
 {
 	int		*lis;
+	t_list	*stack_b;
+
+	lis = find_LIS(stack_a, argc);
+	if (!lis)
+		return (NULL);
+	stack_b = push_out_lis(lis, &stack_a, argc);
+	free(lis);
+	return (stack_b);
+}
+
+void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
+{
 	int		*cost_for_b;
 	int		*cost_for_a;
 	int		*total_cost;
 	int		best_index;
 	int		size_b;
 
-	lis = find_LIS(*stack_a, argc);
-	if (!lis)
-		return ;
-	*stack_b = push_out_lis(lis, stack_a, argc);
-	free(lis);
+	*stack_b = prepare_stack_b(*stack_a, argc);
 	while (*stack_b)
 	{
 		size_b = stack_len(*stack_b);
@@ -155,5 +168,6 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 		free(cost_for_b);
 		free(total_cost);
 	}
+	printf("before edit\n");
 	edit_sorted_stack(stack_a);
 }
