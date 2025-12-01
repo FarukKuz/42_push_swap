@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:07:32 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/27 17:07:42 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 11:35:06 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,22 @@ int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 {
 	int	*lis;
 	int	i;
-	int	current_len;
 	int	current_val;
 
 	lis = malloc(sizeof(int) * max_len);
 	if (!lis)
 		return (NULL);
-	i = 0;
-	current_len = 1;
-	current_val = INT_MIN;
-	while (i <= argc - 1 && current_len <= max_len)
+	i = argc;
+	current_val = INT_MAX;
+	while (i >= 0 && max_len >= 1)
 	{
-		if (len_lis[i] == current_len && array_a[i] > current_val)
+		if (len_lis[i] == max_len && current_val > array_a[i])
 		{
-			lis[current_len - 1] = array_a[i];
+			lis[max_len - 1] = array_a[i];
 			current_val = array_a[i];
-			current_len++;
+			max_len--;
 		}
-		i++;
+		i--;
 	}
 	return (lis);
 }

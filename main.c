@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:32:38 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/22 18:21:38 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 11:03:26 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,28 +86,31 @@ int	main(int argc, char **argv)
 		i++;
 	}
     stack_b = push_out_lis(lis, &stack_a, argc);
+	printf("A\n");
     print_nodes(stack_a);
     printf("\n-------\n");
+	printf("B\n");
     print_nodes(stack_b);
 
     printf("\n--------MALIYET HESAPLAMA----------\n");
     cost_list = malloc(sizeof(int) * 10);
     cost_list = find_cost_list_b(stack_b);
-    printf("COST_LIST[0]:, %d\n", cost_list[0]);
-    printf("COST_LIST[1]:, %d\n", cost_list[1]);
-    printf("COST_LIST[2]:, %d\n", cost_list[2]);
-    printf("COST_LIST[3]:, %d\n", cost_list[3]);
-    printf("COST_LIST[4]:, %d\n", cost_list[4]);
-    printf("COST_LIST[5]:, %d\n", cost_list[5]);
-    printf("COST_LIST[6]:, %d\n", cost_list[6]);
-    printf("COST_LIST[7]:, %d\n", cost_list[7]);
-    printf("COST_LIST[8]:, %d\n", cost_list[8]);
-    
-    stack_a = lis_sort(stack_a, stack_b, argc);
+    printf("COST_LIST[0]: %d\n", cost_list[0]);
+    printf("COST_LIST[1]: %d\n", cost_list[1]);
+    printf("COST_LIST[2]: %d\n", cost_list[2]);
+    printf("COST_LIST[3]: %d\n", cost_list[3]);
+    printf("COST_LIST[4]: %d\n", cost_list[4]);
+    printf("COST_LIST[5]: %d\n", cost_list[5]);
+    printf("COST_LIST[6]: %d\n", cost_list[6]);
+    printf("COST_LIST[7]: %d\n", cost_list[7]);
+    printf("COST_LIST[8]: %d\n", cost_list[8]);
+
+	/*
+	stack_a = lis_sort(stack_a, stack_b, argc);
     printf("\n\nSIRALANMIS\n");
     print_nodes(stack_a);
     printf("\nB\n");
     print_nodes(stack_b);
-    
+    */
 	return (0);
 }

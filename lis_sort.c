@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:06:31 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/27 17:06:40 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/01 10:59:22 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,11 @@ t_list	*lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 	int		i;
 	int		size;
 
-	// int     *total_costs;
 	lis = find_LIS(*stack_a, argc);
 	*stack_b = push_out_lis(lis, stack_a, argc);
 	cost_for_a = find_cost_list_a(*stack_a, *stack_b);
 	cost_for_b = find_cost_list_b(*stack_b);
-	// total_costs = calculate_total_cost(cost_for_a, cost_for_b, argc - 1);
+
 	i = 0;
 	size = argc - 1;
 	while (i < size)
