@@ -49,14 +49,11 @@ t_list	*create_stack(int argc, char **argv)
 	return (head);
 }
 
-void	print_nodes(t_list *head)
+t_list  *return_stack(int argc, char **argv)
 {
-	t_list	*tmp;
+    t_list  *stack;
 
-	tmp = head;
-	while (tmp != NULL)
-	{
-		printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
+    check_args(argc, argv);
+    stack = create_stack(argc, argv);
+    return (stack);
 }

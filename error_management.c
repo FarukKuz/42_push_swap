@@ -79,6 +79,5 @@ int	is_int_range(long nbr)
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
-
 	exit(1);
 }
