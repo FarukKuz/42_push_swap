@@ -135,17 +135,17 @@ void	edit_sorted_stack(t_list **stack_a)
 	}
 }
 
-t_list	*prepare_stack_b(t_list *stack_a, int argc)
+t_list	*prepare_stack_b(t_list **stack_a, int argc)
 {
 	int		*lis;
 	t_list	*stack_b;
     int     lis_len;
 
     lis_len = 0;
-	lis = find_lis(stack_a, argc, &lis_len);
+	lis = find_lis(*stack_a, argc, &lis_len);
 	if (!lis)
 		return (NULL);
-	stack_b = push_out_lis(lis, &stack_a, argc, lis_len);
+	stack_b = push_out_lis(lis, stack_a, argc, lis_len);
 	free(lis);
 	return (stack_b);
 }
@@ -158,7 +158,7 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 	int		best_index;
 	int		size_b;
 
-	*stack_b = prepare_stack_b(*stack_a, argc);
+	*stack_b = prepare_stack_b(stack_a, argc);
 	while (*stack_b)
 	{
 		size_b = stack_len(*stack_b);
@@ -171,6 +171,5 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 		free(cost_for_b);
 		free(total_cost);
 	}
-	printf("before edit\n");
 	edit_sorted_stack(stack_a);
 }
