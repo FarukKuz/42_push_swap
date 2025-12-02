@@ -24,12 +24,11 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct s_cost
+typedef struct s_lis_data
 {
-	int				*cost_a;
-	int				*cost_b;
-	int				*total_cost;
-}					t_cost;
+	int				*lis;
+	int				lis_len;
+}					t_lis_data;
 
 
 t_list				*create_new_node(int data);
@@ -59,8 +58,8 @@ int					*len_lis_min(int *array_a, int argc);
 int					*calc_lis_lens(int *arr, int *len_lis, int n);
 int					find_max_len(int *len_lis, int n);
 int					*create_lis(int *array_a, int *len_lis, int n, int max_len);
-int					*find_LIS(t_list *stack_a, int argc);
-t_list				*push_out_lis(int *lis, t_list **stack_a, int argc);
+int					*find_lis(t_list *stack_a, int argc, int *lis_len);
+t_list              *push_out_lis(int *lis, t_list **stack_a, int argc, int lis_len);
 int					stack_len(t_list *stack);
 int					*find_cost_list_b(t_list *stack_b);
 int					*find_cost_list_a(t_list *stack_a, t_list *stack_b);

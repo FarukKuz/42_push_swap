@@ -48,7 +48,6 @@ int	find_min_index(t_list *stack)
 	i = 0;
 	while (stack)
 	{
-		printf("himm %d - ", i);
 		if (stack->data < min_value)
 		{
 			min_value = stack->data;

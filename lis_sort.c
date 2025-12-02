@@ -12,24 +12,28 @@
 
 #include "push_swap.h"
 
-int	*find_LIS(t_list *stack_a, int argc)
+int *find_lis(t_list *stack_a, int argc, int *lis_len)
 {
-	int	*array_a;
-	int	*len_lis;
-	int	*lis;
-	int	max_len;
+	int	    *array_a;
+	int	    *len_lis_list;
+    int     *lis;
+	int	    max_len;
 
 	array_a = convert_array(stack_a, argc);
 	if (!array_a)
 		return (NULL);
-	len_lis = len_lis_min(array_a, argc - 1);
-	if (!len_lis)
-		return (NULL);
-	len_lis = calc_lis_lens(array_a, len_lis, argc - 1);
-	max_len = find_max_len(len_lis, argc - 1);
-	lis = create_lis(array_a, len_lis, argc - 1, max_len);
+	len_lis_list = len_lis_min(array_a, argc - 1);
+	if (!len_lis_list)
+    {
+        free(array_a);
+        return (NULL);
+    }
+	len_lis_list = calc_lis_lens(array_a, len_lis_list, argc - 1);
+	max_len = find_max_len(len_lis_list, argc - 1);
+	lis = create_lis(array_a, len_lis_list, argc - 1, max_len);
+    *lis_len = max_len;
 	free(array_a);
-	free(len_lis);
+	free(len_lis_list);
 	return (lis);
 }
 
@@ -47,24 +51,26 @@ static int	is_in_lis(int val, int *lis, int size)
 	return (0);
 }
 
-t_list	*push_out_lis(int *lis, t_list **stack_a, int argc)
+t_list    *push_out_lis(int *lis, t_list **stack_a, int argc, int lis_len)
 {
-	t_list	*stack_b;
-	int		size;
-	int		i;
+    t_list    *stack_b;
+    int        size;
+    int        i;
 
-	stack_b = NULL;
-	size = argc - 1;
-	i = 0;
-	while (i < size)
-	{
-		if (is_in_lis((*stack_a)->data, lis, size))
-			*stack_a = ra(*stack_a, 0);
-		else
-			stack_b = pb(stack_a, stack_b);
-		i++;
-	}
-	return (stack_b);
+    stack_b = NULL;
+    size = argc - 1;
+    i = 0;
+    while (i < size - lis_len)
+    {
+        if (is_in_lis((*stack_a)->data, lis, lis_len))
+            *stack_a = ra(*stack_a, 0);
+        else
+        {
+            stack_b = pb(stack_a, stack_b);
+            i++;
+        }
+    }
+    return (stack_b);
 }
 
 void	do_op(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
@@ -109,14 +115,10 @@ void	edit_sorted_stack(t_list **stack_a)
 	int	min_nbr_index;
 	int	len;
 
-	printf("ULAN\n");
-	min_nbr_index = find_min_index(*stack_a);
-	printf("ULAN2\n");
 	len = stack_len(*stack_a);
-	printf("ULAN3\n");
+    min_nbr_index = find_min_index(*stack_a);
 	if (min_nbr_index > len / 2)
 	{
-		printf("girdi\n");
 		while (min_nbr_index < len)
 		{
 			rra(stack_a, 0);
@@ -125,7 +127,6 @@ void	edit_sorted_stack(t_list **stack_a)
 	}
 	else
 	{
-		printf("girdi 2\n");
 		while (min_nbr_index > 0)
 		{
 			*stack_a = ra(*stack_a, 0);
@@ -138,11 +139,13 @@ t_list	*prepare_stack_b(t_list *stack_a, int argc)
 {
 	int		*lis;
 	t_list	*stack_b;
+    int     lis_len;
 
-	lis = find_LIS(stack_a, argc);
+    lis_len = 0;
+	lis = find_lis(stack_a, argc, &lis_len);
 	if (!lis)
 		return (NULL);
-	stack_b = push_out_lis(lis, &stack_a, argc);
+	stack_b = push_out_lis(lis, &stack_a, argc, lis_len);
 	free(lis);
 	return (stack_b);
 }
