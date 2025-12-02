@@ -42,3 +42,15 @@ int	stack_len(t_list *stack)
 	}
 	return (i);
 }
+
+void    free_stack(t_list *stack)
+{
+    t_list    *tmp;
+
+    while (stack)
+    {
+        tmp = stack;
+        stack = stack->next;
+        free(tmp);
+    }
+}

@@ -61,6 +61,7 @@ int					*create_lis(int *array_a, int *len_lis, int n, int max_len);
 int					*find_lis(t_list *stack_a, int argc, int *lis_len);
 t_list              *push_out_lis(int *lis, t_list **stack_a, int argc, int lis_len);
 int					stack_len(t_list *stack);
+void                free_stack(t_list *stack);
 int					*find_cost_list_b(t_list *stack_b);
 int					*find_cost_list_a(t_list *stack_a, t_list *stack_b);
 int					find_best_index(int *total_costs, int size);
