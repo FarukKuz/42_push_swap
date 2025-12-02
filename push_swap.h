@@ -65,8 +65,7 @@ int					*find_cost_list_b(t_list *stack_b);
 int					*find_cost_list_a(t_list *stack_a, t_list *stack_b);
 int					find_best_index(int *total_costs, int size);
 int					find_min_index(t_list *stack);
-int					*calculate_total_cost(int *cost_to_a, int *cost_to_b,
-						int size);
+int					*calculate_total_cost(int *cost_to_a, int *cost_to_b, int size);
 void				lis_sort(t_list **stack_a, t_list **stack_b, int argc);
 void				edit_sorted_stack(t_list **stack_a);
 

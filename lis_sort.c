@@ -73,7 +73,27 @@ t_list    *push_out_lis(int *lis, t_list **stack_a, int argc, int lis_len)
     return (stack_b);
 }
 
-void	do_op(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
+void    do_op_2(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
+{
+    while (cost_a < 0 && cost_b < 0)
+    {
+        rrr(stack_a, stack_b);
+        cost_a++;
+        cost_b++;
+    }
+    while (cost_a < 0)
+    {
+        rra(stack_a, 0);
+        cost_a++;
+    }
+    while (cost_b < 0)
+    {
+        rrb(stack_b, 0);
+        cost_b++;
+    }
+}
+
+void	do_op_1(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
 {
 	while (cost_a > 0 && cost_b > 0)
 	{
@@ -81,32 +101,17 @@ void	do_op(t_list **stack_a, t_list **stack_b, int cost_a, int cost_b)
 		cost_a--;
 		cost_b--;
 	}
-	while (cost_a < 0 && cost_b < 0)
-	{
-		rrr(stack_a, stack_b);
-		cost_a++;
-		cost_b++;
-	}
 	while (cost_a > 0)
 	{
 		*stack_a = ra(*stack_a, 0);
 		cost_a--;
-	}
-	while (cost_a < 0)
-	{
-		rra(stack_a, 0);
-		cost_a++;
 	}
 	while (cost_b > 0)
 	{
 		*stack_b = rb(*stack_b, 0);
 		cost_b--;
 	}
-	while (cost_b < 0)
-	{
-		rrb(stack_b, 0);
-		cost_b++;
-	}
+    do_op_2(stack_a, stack_b, cost_a, cost_b);
 	*stack_a = pa(*stack_a, stack_b);
 }
 
@@ -166,7 +171,7 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 		cost_for_b = find_cost_list_b(*stack_b);
 		total_cost = calculate_total_cost(cost_for_a, cost_for_b, size_b);
 		best_index = find_best_index(total_cost, size_b);
-		do_op(stack_a, stack_b, cost_for_a[best_index], cost_for_b[best_index]);
+		do_op_1(stack_a, stack_b, cost_for_a[best_index], cost_for_b[best_index]);
 		free(cost_for_a);
 		free(cost_for_b);
 		free(total_cost);
