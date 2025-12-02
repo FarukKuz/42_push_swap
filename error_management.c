@@ -20,17 +20,17 @@ void	check_args(int argc, char **argv)
 
 	unique_nbrs = malloc(sizeof(int) * (argc - 1));
 	if (!unique_nbrs)
-		error_exit();
+		error_exit(unique_nbrs);
 	i = 1;
 	while (i < argc)
 	{
 		if (!is_number(argv[i]))
-			error_exit();
+			error_exit(unique_nbrs);
 		if (!is_int_range(ft_atol(argv[i])))
-			error_exit();
+			error_exit(unique_nbrs);
 		current_nbr = (int)ft_atol(argv[i]);
 		if (!is_duplicate(unique_nbrs, current_nbr, i - 1))
-			error_exit();
+			error_exit(unique_nbrs);
 		unique_nbrs[i - 1] = current_nbr;
 		i++;
 	}
@@ -76,8 +76,10 @@ int	is_int_range(long nbr)
 	return (1);
 }
 
-void	error_exit(void)
+void	error_exit(int *unique_nbrs)
 {
+    if (unique_nbrs)
+        free(unique_nbrs);
 	write(2, "Error\n", 6);
 	exit(1);
 }
