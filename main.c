@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	stack_a = create_stack(argc, argv);
 	stack_b = NULL;
 	lis_sort(&stack_a, &stack_b, argc);
-	print_nodes(stack_a);
+    free(stack_a);
+    free(stack_b);
 	return (0);
 }

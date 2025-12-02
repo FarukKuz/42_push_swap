@@ -95,7 +95,7 @@ int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 	lis = malloc(sizeof(int) * max_len);
 	if (!lis)
 		return (NULL);
-	i = argc;
+	i = argc - 1;
 	current_val = INT_MAX;
 	while (i >= 0 && max_len >= 1)
 	{

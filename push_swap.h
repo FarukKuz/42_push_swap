@@ -52,7 +52,7 @@ void				check_args(int argc, char **argv);
 int					is_duplicate(int *unique_nbrs, int num, int len);
 int					is_number(char *arg);
 int					is_int_range(long nbr);
-void				error_exit(char *message);
+void				error_exit(void);
 int					*convert_array(t_list *stack, int argc);
 int					*len_lis_min(int *array_a, int argc);
 int					*calc_lis_lens(int *arr, int *len_lis, int n);
