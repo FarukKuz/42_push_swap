@@ -6,31 +6,13 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:07:32 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 15:45:13 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/03 17:43:26 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*convert_array(t_list *stack, int argc)
-{
-	int	*array;
-	int	i;
-
-	array = malloc(sizeof(int) * (argc - 1));
-	if (!array)
-		return (NULL);
-	i = 0;
-	while (stack)
-	{
-		array[i] = stack->data;
-		stack = stack->next;
-		i++;
-	}
-	return (array);
-}
-
-int	*len_lis_min(int *array_a, int argc)
+static int	*len_lis_min(int *array_a, int argc)
 {
 	int	*len_lis;
 	int	i;
@@ -50,7 +32,7 @@ int	*len_lis_min(int *array_a, int argc)
 	return (len_lis);
 }
 
-int	*calc_lis_lens(int *arr, int *len_lis, int n)
+static int	*calc_lis_lens(int *arr, int *len_lis, int n)
 {
 	int	i;
 	int	j;
@@ -70,7 +52,7 @@ int	*calc_lis_lens(int *arr, int *len_lis, int n)
 	return (len_lis);
 }
 
-int	find_max_len(int *len_lis, int n)
+static int	find_max_len(int *len_lis, int n)
 {
 	int	max_len;
 	int	i;
@@ -86,7 +68,7 @@ int	find_max_len(int *len_lis, int n)
 	return (max_len);
 }
 
-int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
+static int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 {
 	int	*lis;
 	int	i;
@@ -107,5 +89,30 @@ int	*create_lis(int *array_a, int *len_lis, int argc, int max_len)
 		}
 		i--;
 	}
+	return (lis);
+}
+
+int	*find_lis(t_list *stack_a, int argc, int *lis_len)
+{
+	int	*array_a;
+	int	*len_lis_list;
+	int	*lis;
+	int	max_len;
+
+	array_a = convert_array(stack_a, argc);
+	if (!array_a)
+		return (NULL);
+	len_lis_list = len_lis_min(array_a, argc - 1);
+	if (!len_lis_list)
+	{
+		free(array_a);
+		return (NULL);
+	}
+	len_lis_list = calc_lis_lens(array_a, len_lis_list, argc - 1);
+	max_len = find_max_len(len_lis_list, argc - 1);
+	lis = create_lis(array_a, len_lis_list, argc - 1, max_len);
+	*lis_len = max_len;
+	free(array_a);
+	free(len_lis_list);
 	return (lis);
 }

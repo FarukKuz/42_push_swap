@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 16:58:34 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 10:57:22 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/03 16:16:30 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	check_args(int argc, char **argv)
 	int	i;
 	int	current_nbr;
 
-	unique_nbrs = malloc(sizeof(int) * (argc - 1));
+	unique_nbrs = malloc(sizeof(int) * argc);
 	if (!unique_nbrs)
 		error_exit(unique_nbrs);
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		if (!is_number(argv[i]))
@@ -29,9 +29,9 @@ void	check_args(int argc, char **argv)
 		if (!is_int_range(ft_atol(argv[i])))
 			error_exit(unique_nbrs);
 		current_nbr = (int)ft_atol(argv[i]);
-		if (!is_duplicate(unique_nbrs, current_nbr, i - 1))
+		if (!is_duplicate(unique_nbrs, current_nbr, i))
 			error_exit(unique_nbrs);
-		unique_nbrs[i - 1] = current_nbr;
+		unique_nbrs[i] = current_nbr;
 		i++;
 	}
 	free(unique_nbrs);
@@ -56,10 +56,10 @@ int	is_number(char *arg)
 	int	i;
 
 	i = 0;
-    if (arg[i] == '+' || arg[i] == '-')
-        i++;
-    if (! arg[i])
-            return (0);
+	if (arg[i] == '+' || arg[i] == '-')
+		i++;
+	if (!arg[i])
+		return (0);
 	while (arg[i])
 	{
 		if ((arg[i] < '0' || arg[i] > '9'))
@@ -78,8 +78,8 @@ int	is_int_range(long nbr)
 
 void	error_exit(int *unique_nbrs)
 {
-    if (unique_nbrs)
-        free(unique_nbrs);
+	if (unique_nbrs)
+		free(unique_nbrs);
 	write(2, "Error\n", 6);
 	exit(1);
 }

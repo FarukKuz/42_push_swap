@@ -1,74 +1,75 @@
-//
-//  split_args.c
-//  push_swap
-//
-//  Created by Faruk Kuz on 3.12.2025.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/03 16:10:48 by fakuz             #+#    #+#             */
+/*   Updated: 2025/12/03 18:24:22 by fakuz            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-#include "Libft/libft.h"
 
-void    free_args(char **args)
+void	free_args(char **args)
 {
-    int    i;
+	int	i;
 
-    if (!args)
-        return ;
-    i = 0;
-    while (args[i])
-    {
-        free(args[i]);
-        i++;
-    }
-    free(args);
+	if (!args)
+		return ;
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }
 
-int    count_args(char **args)
+int	count_args(char **args)
 {
-    int    count;
+	int	count;
 
-    count = 0;
-    while (args[count])
-    {
-        printf("%s\n", args[count]);
-        count++;
-    }
-    return (count);
+	count = 0;
+	while (args[count])
+		count++;
+	return (count);
 }
 
-static char    *join_args(int argc, char **argv)
+static char	*join_args(int argc, char **argv)
 {
-    char    *result;
-    char    *temp;
-    int        i;
+	char	*result;
+	char	*temp;
+	int		i;
 
-    result = ft_strdup("");
-    i = 1;
-    while (i < argc)
-    {
-        temp = result;
-        result = ft_strjoin(result, argv[i]);
-        free(temp);
-        if (i < argc - 1)
-        {
-            temp = result;
-            result = ft_strjoin(result, " ");
-            free(temp);
-        }
-        i++;
-    }
-    return (result);
+	result = ft_strdup("");
+	i = 1;
+	while (i < argc)
+	{
+		temp = result;
+		result = ft_strjoin(result, argv[i]);
+		free(temp);
+		if (i < argc - 1)
+		{
+			temp = result;
+			result = ft_strjoin(result, " ");
+			free(temp);
+		}
+		i++;
+	}
+	return (result);
 }
 
-char    **split_args(int argc, char **argv)
+char	**split_args(int argc, char **argv)
 {
-    char    *joined;
-    char    **args;
+	char	*joined;
+	char	**args;
 
-    joined = join_args(argc, argv);
-    if (!joined)
-        return (NULL);
-    args = ft_split(joined, ' ');
-    free(joined);
-    return (args);
+	joined = join_args(argc, argv);
+	if (!joined)
+		return (NULL);
+	args = ft_split(joined, ' ');
+	free(joined);
+	return (args);
 }

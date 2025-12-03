@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:09:30 by fakuz             #+#    #+#             */
-/*   Updated: 2025/11/27 17:09:39 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/03 17:27:33 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,32 @@ int	stack_len(t_list *stack)
 	return (i);
 }
 
-void    free_stack(t_list *stack)
+void	free_stack(t_list *stack)
 {
-    t_list    *tmp;
+	t_list	*tmp;
 
-    while (stack)
-    {
-        tmp = stack;
-        stack = stack->next;
-        free(tmp);
-    }
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
+}
+
+int	*convert_array(t_list *stack, int argc)
+{
+	int	*array;
+	int	i;
+
+	array = malloc(sizeof(int) * (argc - 1));
+	if (!array)
+		return (NULL);
+	i = 0;
+	while (stack)
+	{
+		array[i] = stack->data;
+		stack = stack->next;
+		i++;
+	}
+	return (array);
 }

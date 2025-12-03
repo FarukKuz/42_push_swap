@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:32:38 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 18:25:40 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/03 18:39:46 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,25 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-    char    **args;
-    int     x = 0;
+	char	**args;
+	int		args_count;
 
-    args = NULL;
-    printf("split oncesi\n");
-    args = split_args(argc, argv);
-    printf("split sonrasi\n");
-    x = count_args(args);
-    printf("%d - ", x);
-	check_args(argc, args);
-    printf("check error oncesi\n");
-	stack_a = create_stack(argc, args);
+	if (argc < 2)
+		return (0);
+	args = split_args(argc, argv);
+	if (!args)
+		return (1);
+	args_count = count_args(args);
+	if (args_count == 0)
+	{
+		free_args(args);
+		return (0);
+	}
+	stack_a = return_stack(args_count, args);
 	stack_b = NULL;
-	lis_sort(&stack_a, &stack_b, argc);
-    free_stack(stack_a);
-    free_stack(stack_b);
-    free_args(args);
+	lis_sort(&stack_a, &stack_b, args_count + 1);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	free_args(args);
 	return (0);
 }

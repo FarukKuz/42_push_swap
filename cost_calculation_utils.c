@@ -6,36 +6,11 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:08:17 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/01 18:43:00 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/03 18:13:04 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	*find_cost_list_b(t_list *stack_b)
-{
-	int		*cost_list;
-	int		size;
-	int		i;
-	t_list	*tmp;
-
-	size = stack_len(stack_b);
-	cost_list = (int *)malloc(sizeof(int) * size);
-	if (!cost_list)
-		return (NULL);
-	i = 0;
-	tmp = stack_b;
-	while (tmp)
-	{
-		if (i <= size / 2)
-			cost_list[i] = i;
-		else
-			cost_list[i] = (size - i) * -1;
-		i++;
-		tmp = tmp->next;
-	}
-	return (cost_list);
-}
 
 int	find_min_index(t_list *stack)
 {
@@ -83,6 +58,31 @@ static int	index_target_a(t_list *stack_a, int current_value)
 	if (index == -1)
 		return (find_min_index(stack_a));
 	return (index);
+}
+
+int	*find_cost_list_b(t_list *stack_b)
+{
+	int		*cost_list;
+	int		size;
+	int		i;
+	t_list	*tmp;
+
+	size = stack_len(stack_b);
+	cost_list = (int *)malloc(sizeof(int) * size);
+	if (!cost_list)
+		return (NULL);
+	i = 0;
+	tmp = stack_b;
+	while (tmp)
+	{
+		if (i <= size / 2)
+			cost_list[i] = i;
+		else
+			cost_list[i] = (size - i) * -1;
+		i++;
+		tmp = tmp->next;
+	}
+	return (cost_list);
 }
 
 int	*find_cost_list_a(t_list *stack_a, t_list *stack_b)
