@@ -32,8 +32,10 @@ typedef struct s_lis_data
 
 
 t_list				*create_new_node(int data);
-t_list				*create_stack(int argc, char **argv);
-void				print_nodes(t_list *head);
+t_list				*create_stack(int argc, char **args);
+void                free_args(char **args);
+int                 count_args(char **args);
+char                **split_args(int argc, char **argv);
 long				ft_atol(const char *nptr);
 t_list				*sa(t_list *first_node, t_list *second_node, int flag);
 t_list				*sb(t_list *first_node, t_list *second_node, int flag);

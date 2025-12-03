@@ -10,7 +10,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 SRC = op_push.c push_swap.c op_swap.c libft/ft_atol.c op_rotate.c op_reverse_rotate.c\
 	stack_utils.c error_management.c lis_utils.c lis_sort.c main.c cost_calculation.c\
-	cost_calculation_utils.c
+	cost_calculation_utils.c split_args.c
 
 RM = rm -rf
 

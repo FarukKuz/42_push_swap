@@ -16,12 +16,22 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+    char    **args;
+    int     x = 0;
 
-	check_args(argc, argv);
-	stack_a = create_stack(argc, argv);
+    args = NULL;
+    printf("split oncesi\n");
+    args = split_args(argc, argv);
+    printf("split sonrasi\n");
+    x = count_args(args);
+    printf("%d - ", x);
+	check_args(argc, args);
+    printf("check error oncesi\n");
+	stack_a = create_stack(argc, args);
 	stack_b = NULL;
 	lis_sort(&stack_a, &stack_b, argc);
     free_stack(stack_a);
     free_stack(stack_b);
+    free_args(args);
 	return (0);
 }
