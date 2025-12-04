@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:06:31 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/03 19:20:02 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/04 12:31:13 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ void	lis_sort(t_list **stack_a, t_list **stack_b, int argc)
 	int	size_b;
 
 	*stack_b = prepare_stack_b(stack_a, argc);
+	if (argc == 2)
+		return ;
 	if (stack_len(*stack_a) <= 3)
-		three_sort(stack_a);
+		three_sort(stack_a, stack_len(*stack_a));
 	while (*stack_b)
 	{
 		size_b = stack_len(*stack_b);

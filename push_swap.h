@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:56:46 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/03 19:28:24 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/04 12:07:25 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int			find_min_index(t_list *stack);
 int			*calculate_total_cost(int *cost_a, int *cost_b, int size);
 void		lis_sort(t_list **stack_a, t_list **stack_b, int argc);
 t_list		*prepare_stack_b(t_list **stack_a, int argc);
-void		three_sort(t_list **stack);
+void		three_sort(t_list **stack, int stack_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 16:10:48 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/03 18:24:22 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/04 12:29:17 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ int	count_args(char **args)
 	return (count);
 }
 
+static int	is_only_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[0] == '\0')
+		return (1);
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static char	*join_args(int argc, char **argv)
 {
 	char	*result;
@@ -48,6 +64,8 @@ static char	*join_args(int argc, char **argv)
 	while (i < argc)
 	{
 		temp = result;
+		if (is_only_space(argv[i]))
+			return (NULL);
 		result = ft_strjoin(result, argv[i]);
 		free(temp);
 		if (i < argc - 1)
@@ -70,6 +88,11 @@ char	**split_args(int argc, char **argv)
 	if (!joined)
 		return (NULL);
 	args = ft_split(joined, ' ');
+	if (!args)
+	{
+		free(joined);
+		return (NULL);
+	}
 	free(joined);
 	return (args);
 }
