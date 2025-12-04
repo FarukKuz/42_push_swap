@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 16:10:48 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/04 12:29:17 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:21:22 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*join_args(int argc, char **argv)
 	{
 		temp = result;
 		if (is_only_space(argv[i]))
-			return (NULL);
+			return (free(result), NULL);
 		result = ft_strjoin(result, argv[i]);
 		free(temp);
 		if (i < argc - 1)

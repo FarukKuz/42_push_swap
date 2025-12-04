@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 16:58:34 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/03 16:16:30 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:14:48 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void	check_args(int argc, char **argv)
 
 	unique_nbrs = malloc(sizeof(int) * argc);
 	if (!unique_nbrs)
-		error_exit(unique_nbrs);
+		error_exit(unique_nbrs, argv);
 	i = 0;
 	while (i < argc)
 	{
 		if (!is_number(argv[i]))
-			error_exit(unique_nbrs);
+			error_exit(unique_nbrs, argv);
 		if (!is_int_range(ft_atol(argv[i])))
-			error_exit(unique_nbrs);
+			error_exit(unique_nbrs, argv);
 		current_nbr = (int)ft_atol(argv[i]);
 		if (!is_duplicate(unique_nbrs, current_nbr, i))
-			error_exit(unique_nbrs);
+			error_exit(unique_nbrs, argv);
 		unique_nbrs[i] = current_nbr;
 		i++;
 	}
@@ -76,10 +76,11 @@ int	is_int_range(long nbr)
 	return (1);
 }
 
-void	error_exit(int *unique_nbrs)
+void	error_exit(int *unique_nbrs, char **argv)
 {
 	if (unique_nbrs)
 		free(unique_nbrs);
+	free_args(argv);
 	write(2, "Error\n", 6);
 	exit(1);
 }

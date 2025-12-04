@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:56:46 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/04 12:07:25 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:15:12 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		check_args(int argc, char **argv);
 int			is_duplicate(int *unique_nbrs, int num, int len);
 int			is_number(char *arg);
 int			is_int_range(long nbr);
-void		error_exit(int *unique_nbrs);
+void		error_exit(int *unique_nbrs, char **argv);
 int			*convert_array(t_list *stack, int argc);
 int			*find_lis(t_list *stack_a, int argc, int *lis_len);
 int			stack_len(t_list *stack);
