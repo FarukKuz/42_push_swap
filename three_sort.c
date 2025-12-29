@@ -6,7 +6,7 @@
 /*   By: fakuz <fakuz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 18:23:52 by fakuz             #+#    #+#             */
-/*   Updated: 2025/12/04 12:07:03 by fakuz            ###   ########.fr       */
+/*   Updated: 2025/12/29 21:03:54 by fakuz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,12 @@ void	three_sort(t_list **stack, int stack_size)
 {
 	int	first;
 	int	second;
-	int	third;
 	int	max;
 
 	if (stack_size == 3)
 	{
 		first = (*stack)->data;
 		second = (*stack)->next->data;
-		third = (*stack)->next->next->data;
 		max = get_max(*stack);
 		if (first == max)
 			*stack = ra(*stack, 0);
